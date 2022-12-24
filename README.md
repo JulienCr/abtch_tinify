@@ -1,1 +1,1 @@
-# abtch_tinify
+# batch tinify
