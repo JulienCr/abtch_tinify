@@ -1,13 +1,13 @@
 import os
 import tempfile
 import sys
-from PIL import Image
+from pillow_simd import Image
 import tinify
 import shutil  # Ajout de l'import de shutil
 
 TINIFY_API_KEY = "MrRNg7WbrybQ5kVRwqtHVpxb2ZQyVWGR"
 
-MAX_SIZE = (1024, 1024)
+MAX_SIZE = (800, 800)
 
 
 def resize_image(image_path):

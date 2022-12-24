@@ -1,8 +1,10 @@
+-e git+https://github.com/JulienCr/batch_tinify.git@f1c5f307360c2d5ff7037939cba330f88c242053#egg=batch_tinify
 certifi==2022.12.7
 charset-normalizer==2.1.1
 docutils==0.19
 idna==3.4
 Pillow==9.3.0
+Pillow-SIMD==9.0.0.post1
 protobuf==4.21.12
 PyYAML==6.0
 requests==2.28.1
