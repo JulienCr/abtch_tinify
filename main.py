@@ -57,23 +57,26 @@ def process(file_path, dest_dir):
 def main():
     print("Début du traitement des images")
     # Récupérez les arguments de la ligne de commande
-    input_dir = sys.argv[1]
-    output_dir = sys.argv[2]
+    input_dir = sys.argv[1] if len(sys.argv) > 1 else "input"
+    output_dir = sys.argv[2] if len(sys.argv) > 2 else "output"
 
     print(input_dir, output_dir)
 
-    # Vérifiez que les répertoires d'entrée et de sortie existent
+    # Créez les répertoires d'entrée et de sortie s'ils n'existent pas
     if not os.path.exists(input_dir):
-        print("Le répertoire d'entrée n'existe pas")
-        sys.exit(1)
+        os.makedirs(input_dir)
 
     if not os.path.exists(output_dir):
-        print("Le répertoire de sortie n'existe pas")
-        sys.exit(1)
+        os.makedirs(output_dir)
 
     # Appelez la fonction process sur chaque fichier dans le répertoire source
     for file in os.listdir(input_dir):
         file_path = os.path.join(input_dir, file)
+        _, file_extension = os.path.splitext(file_path)
+        if file_extension.lower() not in (".jpg", ".png", ".jpeg"):
+            print("Le fichier {} n'est pas une image valide. Il sera ignoré.".format(
+                file_path))
+            continue
         process(file_path, output_dir)
 
 
