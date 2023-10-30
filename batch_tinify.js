@@ -61,7 +61,8 @@ async function main() {
         await process(filePath, outputDir);
     }
 
-    execSync('rm -rf temp');
+    const command = os.platform() === 'win32' ? 'rd /s /q temp' : 'rm -rf temp';
+    execSync(command);
     console.log("Fin du traitement des images");
 }
 
