@@ -3,6 +3,7 @@ const path = require('path');
 const sharp = require('sharp');
 const Tinify = require('tinify');
 const { execSync } = require('child_process');
+const os = require('os');
 
 const TINIFY_API_KEY = "MrRNg7WbrybQ5kVRwqtHVpxb2ZQyVWGR";
 const MAX_SIZE = [800, 800];
@@ -36,7 +37,8 @@ async function process(filePath, destDir) {
     const resizedFilePath = await resizeImage(filePath);
     await optimizeImage(resizedFilePath);
 
-    execSync(`cp ${resizedFilePath} ${path.join(destDir, path.basename(filePath))}`);
+    const command = os.platform() === 'win32' ? `copy ${resizedFilePath} ${path.join(destDir, path.basename(filePath))}` : `cp ${resizedFilePath} ${path.join(destDir, path.basename(filePath))}`;
+    execSync(command);
 }
 
 async function main() {
@@ -59,7 +61,8 @@ async function main() {
         await process(filePath, outputDir);
     }
 
-    execSync('rm -rf temp');
+    const command = os.platform() === 'win32' ? 'rd /s /q temp' : 'rm -rf temp';
+    execSync(command);
     console.log("Fin du traitement des images");
 }
 
