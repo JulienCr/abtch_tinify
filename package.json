@@ -1,0 +1,16 @@
+{
+  "name": "batch_tinify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "node batch_tinify.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.32.6",
+    "tinify": "^1.7.1"
+  }
+}
