@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "color-name": "^2.0.0",
+    "color-string": "^1.9.1",
     "sharp": "^0.32.6",
     "tinify": "^1.7.1"
   }
